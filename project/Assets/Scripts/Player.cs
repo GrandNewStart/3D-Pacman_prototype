@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
             itemCollected.Play();
             other.gameObject.SetActive(false);
             score++;
+            manager.getItem(score);
 
             if (score == manager.total)
             {
