@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
 
             if (score == manager.total)
             {
-                SceneManager.LoadScene(1);
+                manager.stageClear();
             }
         }
     }
