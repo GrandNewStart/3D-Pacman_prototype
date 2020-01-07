@@ -12,14 +12,31 @@ public class GameManagerLogic : MonoBehaviour
     public Text totalScore;
     public Text playerScore;
     public Text stageCount;
-    public Text gameOver;
+    public GameObject gameOver;
     public Image itemImage;
+    public static bool pause = false;
+    public GameObject pauseMenu = null;
 
     public void Awake()
     {
         totalScore.text = "/ " + total.ToString();
         stageCount.text = "Stage : " + stage.ToString();
         gameOver.gameObject.SetActive(false);
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (pause)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
+        }
     }
 
     public void getItem(int score)
@@ -46,6 +63,30 @@ public class GameManagerLogic : MonoBehaviour
 
     public void Restart()
     {
+        SceneManager.LoadScene(1);
+    }
+
+    public void ReturnToMenu()
+    {
         SceneManager.LoadScene(0);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    public void Resume()
+    {
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1f;
+        pause = false;
+    }
+
+    public void Pause()
+    {
+        pauseMenu.SetActive(true);
+        Time.timeScale = 0f;
+        pause = true;
     }
 }
