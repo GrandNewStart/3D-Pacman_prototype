@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     public int score;
-    private AudioSource itemCollected;
     public GameManagerLogic manager;
+    private AudioSource itemCollected;
 
     void Start()
     {
