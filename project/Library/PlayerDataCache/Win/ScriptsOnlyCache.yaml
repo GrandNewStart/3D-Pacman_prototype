@@ -32,6 +32,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
+    - UnityEngine.UI.RawImage
     - UnityEngine.UI.Text
   sceneClasses:
     Assets/Scenes/01 Menu.unity:
@@ -56,31 +57,31 @@ ScriptsOnlyBuild:
     - Class: 109
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9716}
+      Script: {instanceID: 9718}
     - Class: 114
-      Script: {instanceID: 9798}
+      Script: {instanceID: 9800}
     - Class: 114
-      Script: {instanceID: 9906}
+      Script: {instanceID: 9908}
     - Class: 114
-      Script: {instanceID: 10278}
+      Script: {instanceID: 10280}
     - Class: 114
-      Script: {instanceID: 10298}
+      Script: {instanceID: 10300}
     - Class: 114
-      Script: {instanceID: 10624}
+      Script: {instanceID: 10626}
     - Class: 114
-      Script: {instanceID: 10834}
+      Script: {instanceID: 10836}
     - Class: 114
-      Script: {instanceID: 10848}
+      Script: {instanceID: 10850}
     - Class: 114
-      Script: {instanceID: 11014}
+      Script: {instanceID: 11016}
     - Class: 114
-      Script: {instanceID: 11072}
+      Script: {instanceID: 11074}
     - Class: 114
-      Script: {instanceID: 11220}
+      Script: {instanceID: 11222}
     - Class: 114
-      Script: {instanceID: 11330}
+      Script: {instanceID: 11332}
     - Class: 114
-      Script: {instanceID: 11424}
+      Script: {instanceID: 11426}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -95,7 +96,7 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 224
       Script: {instanceID: 0}
-    Assets/Scenes/02 stage_1_0.unity:
+    Assets/Scenes/02 Stage_1_1.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -126,46 +127,50 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 83
       Script: {instanceID: 0}
+    - Class: 84
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9716}
+      Script: {instanceID: 9718}
     - Class: 114
-      Script: {instanceID: 9798}
+      Script: {instanceID: 9800}
     - Class: 114
-      Script: {instanceID: 9866}
+      Script: {instanceID: 9868}
     - Class: 114
-      Script: {instanceID: 9906}
+      Script: {instanceID: 9908}
     - Class: 114
-      Script: {instanceID: 10004}
+      Script: {instanceID: 10006}
     - Class: 114
-      Script: {instanceID: 10278}
+      Script: {instanceID: 10280}
     - Class: 114
-      Script: {instanceID: 10418}
+      Script: {instanceID: 10420}
     - Class: 114
-      Script: {instanceID: 10504}
+      Script: {instanceID: 10506}
     - Class: 114
-      Script: {instanceID: 10624}
+      Script: {instanceID: 10626}
     - Class: 114
-      Script: {instanceID: 10788}
+      Script: {instanceID: 10646}
     - Class: 114
-      Script: {instanceID: 10834}
+      Script: {instanceID: 10790}
     - Class: 114
-      Script: {instanceID: 10960}
+      Script: {instanceID: 10836}
     - Class: 114
-      Script: {instanceID: 10966}
+      Script: {instanceID: 10962}
     - Class: 114
-      Script: {instanceID: 11014}
+      Script: {instanceID: 10968}
     - Class: 114
-      Script: {instanceID: 11072}
+      Script: {instanceID: 11016}
     - Class: 114
-      Script: {instanceID: 11330}
+      Script: {instanceID: 11074}
     - Class: 114
-      Script: {instanceID: 11406}
+      Script: {instanceID: 11332}
     - Class: 114
-      Script: {instanceID: 11424}
+      Script: {instanceID: 11408}
+    - Class: 114
+      Script: {instanceID: 11426}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -180,6 +185,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 195
       Script: {instanceID: 0}
+    - Class: 212
+      Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
     - Class: 222
@@ -190,7 +197,7 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 238
       Script: {instanceID: 0}
-    Assets/Scenes/03 Finish.unity:
+    Assets/Scenes/04 Finish.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -210,25 +217,25 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9716}
+      Script: {instanceID: 9718}
     - Class: 114
-      Script: {instanceID: 9798}
+      Script: {instanceID: 9800}
     - Class: 114
-      Script: {instanceID: 9866}
+      Script: {instanceID: 9868}
     - Class: 114
-      Script: {instanceID: 9906}
+      Script: {instanceID: 9908}
     - Class: 114
-      Script: {instanceID: 10278}
+      Script: {instanceID: 10280}
     - Class: 114
-      Script: {instanceID: 10624}
+      Script: {instanceID: 10626}
     - Class: 114
-      Script: {instanceID: 10834}
+      Script: {instanceID: 10836}
     - Class: 114
-      Script: {instanceID: 11014}
+      Script: {instanceID: 11016}
     - Class: 114
-      Script: {instanceID: 11072}
+      Script: {instanceID: 11074}
     - Class: 114
-      Script: {instanceID: 11424}
+      Script: {instanceID: 11426}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -727,7 +734,7 @@ ScriptsOnlyBuild:
   platform: 5
   scenePathNames:
   - Assets/Scenes/01 Menu.unity
-  - Assets/Scenes/02 stage_1_0.unity
-  - Assets/Scenes/03 Finish.unity
+  - Assets/Scenes/02 Stage_1_1.unity
+  - Assets/Scenes/04 Finish.unity
   playerPath: "C:/Users/jinwo/OneDrive/\uBC14\uD0D5 \uD654\uBA74/Unity Projects/3D-Pacman_prototype/build/3D-PacMan(Prototype
     ).exe"
