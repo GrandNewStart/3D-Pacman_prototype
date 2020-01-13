@@ -5,14 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    public int score;
-    public GameManagerLogic manager;
-    private AudioSource itemCollected;
+    public int score = 0;
+    public GameManagerLogic manager = null;
+    public AudioSource itemCollected = null;
 
     void Start()
     {
         score = 0;
-        itemCollected = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -26,7 +25,7 @@ public class Player : MonoBehaviour
 
             if (score == manager.total)
             {
-                manager.stageClear();
+                manager.StageClear();
             }
         }
     }

@@ -4,38 +4,79 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public CharacterController controller;
-    public Transform groundCheck;
+    [Header("Movement Properties")]
+    public float speed = 0f;
+    public int stepInterval = 0;
+    public AudioSource walk = null;
+    private int walkStep = 0;
+
+    [Header("Fall Properties")]
+    public float gravity = 9.81f;
+    public float jumpHeight = 0f;
+    public CharacterController characterController = null;
+    public GameObject groundCheck;
     public LayerMask groundMask;
-    public float speed = 12f;
-    public float gravity = -9.81f;
-    public float groundDistance = 0.4f;
-    public float jumpHeight = 3f;
+    private float verticalVelocity = 0f;
+    private bool isGrounded = true;
+    private float groundDistance = 0.4f;
 
-    private Vector3 velocity;
-    private bool isGrounded;
-
-    private void Update()
+    void Update()
     {
-        //낙하
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        if (isGrounded && velocity.y < 0)
+        Move();
+        Jump();
+    }
+
+    void Move()
+    {
+        float moveV = Input.GetAxis("Vertical") * speed * Time.deltaTime;
+        float moveH = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+
+        Vector3 move = transform.right * moveH + transform.forward * moveV;
+
+        characterController.Move(move);
+        StepNoise();
+    }
+
+    void Jump()
+    {
+        isGrounded = Physics.CheckSphere(groundCheck.transform.position, groundDistance, groundMask);
+
+        if (isGrounded && verticalVelocity < 0)
         {
-            velocity.y = -2f;
+            verticalVelocity = -2f;
+
+            if (Input.GetButtonDown("Jump"))
+            {
+                verticalVelocity = jumpHeight;
+            }
         }
-        velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
-
-        //이동
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
-        Vector3 move = transform.right * x + transform.forward * z;
-        controller.Move(move * speed * Time.deltaTime);
-
-        //점프
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        else
         {
-            velocity.y = Mathf.Sqrt(jumpHeight *  -2f * gravity);
+            verticalVelocity -= gravity * Time.deltaTime;
+        }
+
+        Vector3 jumpVector = new Vector3(0f, verticalVelocity, 0f);
+        characterController.Move(jumpVector * Time.deltaTime);
+    }
+
+    void StepNoise()
+    {
+        if (walkStep == stepInterval)
+        {
+            if (isGrounded)
+            {
+                walk.Play();
+                walkStep++;
+            }
+        }
+        if (walkStep > stepInterval)
+        {
+            walkStep = 0;
+        }
+
+        if (Input.GetButton("Vertical") || Input.GetButton("Horizontal"))
+        {
+            walkStep++;
         }
     }
 }

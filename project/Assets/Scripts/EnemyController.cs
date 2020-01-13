@@ -6,9 +6,12 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     public float lookRadius = 10f;
+    public float randomRange = 0f;
+    private int stuckTime = 0;
     public GameManagerLogic manager;
     Transform target;
     NavMeshAgent agent;
+    Rigidbody rb;
     Vector3 randomTarget;
 
     public enum EnemyState {idle, chase};
@@ -20,6 +23,7 @@ public class EnemyController : MonoBehaviour
     {
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
+        rb = GetComponent<Rigidbody>();
     } 
 
     void Update()
@@ -38,7 +42,7 @@ public class EnemyController : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            manager.stageLost();
+            manager.StageLost();
         }
     }
 
@@ -48,7 +52,8 @@ public class EnemyController : MonoBehaviour
     /// <returns></returns>
     Vector3 RandomTarget()
     {
-        Vector3 position = new Vector3(Random.Range(-100.0f, 100.0f), 0f, Random.Range(-100.0f,100.0f));
+        Vector3 position = new Vector3(Random.Range(-randomRange, randomRange), 0f, Random.Range(-randomRange, randomRange));
+        position += transform.position;
         Ray ray = new Ray(position, Vector3.down);
         RaycastHit hit = new RaycastHit();
 
@@ -112,7 +117,18 @@ public class EnemyController : MonoBehaviour
             if (Vector3.Distance(transform.position, randomTarget) <= 5.0f)
             {
                 wandering = false;
-                Debug.Log("changed random target");
+                Debug.Log("arrived, changed random target");
+            }
+
+            if (rb.velocity.magnitude < 1.0f)
+            {
+                stuckTime++;
+                if(stuckTime > 30)
+                {
+                    wandering = false;
+                    stuckTime = 0;
+                    Debug.Log("stuck, changed random target");
+                }
             }
                 
         }

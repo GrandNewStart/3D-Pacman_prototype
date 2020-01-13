@@ -10,6 +10,7 @@ public class GameManagerLogic : MonoBehaviour
     public int stage = 0;
     public float restartDelay = 0f;
     public GameObject gameOver = null;
+    public GameObject stageClear = null;
     [Header("UI")]
     public GameObject HUD = null;
     public Text totalScore = null;
@@ -29,6 +30,7 @@ public class GameManagerLogic : MonoBehaviour
         totalScore.text = "/ " + total.ToString();
         stageCount.text = "Stage : " + stage.ToString();
         gameOver.gameObject.SetActive(false);
+        stageClear.SetActive(false);
         over = false;
         Cursor.visible = false;
     }
@@ -53,13 +55,23 @@ public class GameManagerLogic : MonoBehaviour
         playerScore.text = score.ToString();
     }
 
-    public void stageClear()
+    public void StageClear()
     {
-        SceneManager.LoadScene(++stage);
+        HUD.SetActive(false);
+        stageClear.SetActive(true);
+        playerMovement.speed = 0f;
+        mouseLook.mouseSensitivity = 0f;
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        Invoke("NextStage", restartDelay);
     }
 
-    public void stageLost()
+    public void NextStage()
+    {
+        SceneManager.LoadScene(++stage);
+    }
+
+    public void StageLost()
     {
         HUD.SetActive(false);
         gameOver.gameObject.SetActive(true);
@@ -76,6 +88,7 @@ public class GameManagerLogic : MonoBehaviour
 
     public void Restart()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(stage);
     }
 
